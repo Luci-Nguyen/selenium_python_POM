@@ -3,7 +3,8 @@ it is a Page Object Model framework template to automate Web UI test through Sel
 
 To install plugins:
 pip install -r requirements.txt
-    
+run 1 case 
+    pytest -k "test_case_1" -v    
 run test
     pytest --html=reports/report.htm --platform web --browser chrome
 
