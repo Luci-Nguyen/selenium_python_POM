@@ -85,3 +85,23 @@ class BasePage():
 
     def set_window_size_to(self, width, height):
         self.driver.set_window_size(width, height)
+
+    def set_window_size_to_75_percent(self):
+        current_size = self.driver.get_window_size()
+        current_width = current_size['width']
+        current_height = current_size['height']
+        new_width = int(current_width * 0.75)
+        new_height = int(current_height * 0.75)
+        self.driver.set_window_size(new_width, new_height)
+
+    def set_window_size_to_100_percent(self):
+        self.driver.maximize_window()
+
+    def upload_file(self, file_input_locator, file_path):
+        file_input_element = self.driver.find_element(*file_input_locator)
+        file_input_element.send_keys(file_path)
+
+    def upload_files(self, file_input_selector, file_paths):
+        file_input = self.driver.find_element_by_css_selector(file_input_selector)
+        files = "\n".join(file_paths)
+        file_input.send_keys(files)
